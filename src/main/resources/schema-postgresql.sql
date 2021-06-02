@@ -1,37 +1,37 @@
-DROP TABLE IF EXISTS vaccines_by_animal;
-DROP TABLE IF EXISTS animal;
-DROP TABLE IF EXISTS vaccine;
+DROP TABLE IF EXISTS COURSES_BY_EMPLOYEE;
+DROP TABLE IF EXISTS EMPLOYEE;
+DROP TABLE IF EXISTS COURSE;
 
-CREATE SEQUENCE IF NOT EXISTS ANIMAL_SEQ START 2;
-CREATE SEQUENCE IF NOT EXISTS VACCINE_SEQ START 1;
+CREATE SEQUENCE IF NOT EXISTS EMPLOYEE_SEQ START 2;
+CREATE SEQUENCE IF NOT EXISTS COURSE_SEQ START 1;
 
-CREATE TABLE IF NOT EXISTS animal
+CREATE TABLE IF NOT EXISTS EMPLOYEE
 (
     id bigint PRIMARY KEY,
-    breed VARCHAR(255),
+    rol_position VARCHAR(255),
     gender VARCHAR(255),
-    name VARCHAR(10),
-    vaccinated boolean NOT NULL,
+    name VARCHAR(100),
+    has_courses boolean NOT NULL,
     UNIQUE(name)
 );
 
-CREATE TABLE IF NOT EXISTS vaccine
+CREATE TABLE IF NOT EXISTS COURSE
 (
     id bigint PRIMARY KEY,
     name VARCHAR(255),
     UNIQUE(name)
 );
 
-CREATE TABLE IF NOT EXISTS vaccines_by_animal
+CREATE TABLE IF NOT EXISTS COURSES_BY_EMPLOYEE
 (
-    animal_id bigint NOT NULL,
-    vaccine_id bigint NOT NULL,
-    CONSTRAINT fk_animal FOREIGN KEY (animal_id)
-        REFERENCES animal (id) MATCH SIMPLE
+    employee_id bigint NOT NULL,
+    course_id bigint NOT NULL,
+    CONSTRAINT fk_employee FOREIGN KEY (employee_id)
+        REFERENCES employee (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT fk_vaccine FOREIGN KEY (vaccine_id)
-        REFERENCES public.vaccine (id) MATCH SIMPLE
+    CONSTRAINT fk_course FOREIGN KEY (course_id)
+        REFERENCES public.course (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );

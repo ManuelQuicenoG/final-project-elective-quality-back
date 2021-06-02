@@ -1,0 +1,28 @@
+{
+  "type": "array",
+  "minItems": 1,
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "rolPosition": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["Male", "Female"]
+        },
+        "courses": {
+          "type": "array"
+        },
+        "hasCourses": {
+          "type": "boolean"
+        }
+      },
+      "required": ["name", "rolPosition", "gender", "courses", "hasCourses"]
+    }
+  ]
+}
