@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         url = "${PACT_BROKER_BASE_URL}",
         authentication = @PactBrokerAuth(token = "${PACT_BROKER_TOKEN}")
 )
-@Provider("EmployeeShelterBack")
+@Provider("EmployeeBack")
 @ExtendWith(MockitoExtension.class)
 public class EmployeesContractTest {
 
